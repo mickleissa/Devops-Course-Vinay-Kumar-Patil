@@ -21,14 +21,21 @@ pipeline{
 
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc245f009e58bbaf45bf8b89c106a3880fd42b86
         // Stage3 :Deploying 
         stage ('Deploy'){
             steps {
                 echo ' Deploying.........'
             }
         }
+<<<<<<< HEAD
             }
 }
+=======
+>>>>>>> bc245f009e58bbaf45bf8b89c106a3880fd42b86
 
              // Stage3 : Publish the source code to Sonarqube
         // stage ('Sonarqube Analysis'){
@@ -43,3 +50,7 @@ pipeline{
         
         
 
+<<<<<<< HEAD
+=======
+}
+>>>>>>> bc245f009e58bbaf45bf8b89c106a3880fd42b86
