@@ -45,7 +45,7 @@ pipeline{
                 version: '0.0.99'
             }
         }
-         Stage 4 : Print some information
+         //Stage 4 : Print some information
         stage ('Print Environment variables'){
                     steps {
                         echo "Artifact ID is '${ArtifactId}'"
