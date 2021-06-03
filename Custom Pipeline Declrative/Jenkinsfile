@@ -5,9 +5,9 @@ pipeline{
         maven 'maven'
     }
     environment{
-        ArtifactId      = readMavenPom().getArtifactId()
-        Version         = readMavenPom().getVersion()
-        Name            = readMavenPom().getName()
+        ArtifactId = readMavenPom().getArtifactId()
+        Version = readMavenPom().getVersion()
+        Name = readMavenPom().getName()
     }
 
     stages {
@@ -30,7 +30,18 @@ pipeline{
         //stage3: : Publish the artifact to Nexus
         stage ('Publish to Nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'VinayDevOpsLab', classifier: '', file: 'target/VinayDevOpsLab-0.0.8.war', type: 'war']], credentialsId: '3d9d30ef-964d-41d0-b514-02ded5bc8c6f', groupId: 'com.vinaysdevopslab', nexusUrl: '172.20.10.45:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'VinaysDevOpsLab-SNAPSHOT', version: '0.0.99'
+                nexusArtifactUploader artifacts:
+                [[artifactId: 'VinayDevOpsLab',
+                classifier: '',
+                file: 'target/VinayDevOpsLab-0.0.8.war',
+                type: 'war']],
+                credentialsId: '3d9d30ef-964d-41d0-b514-02ded5bc8c6f',
+                groupId: 'com.vinaysdevopslab',
+                nexusUrl: '172.20.10.45:8081',
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'VinaysDevOpsLab-SNAPSHOT',
+                version: '0.0.99'
             }
         }
 
@@ -39,7 +50,7 @@ pipeline{
             steps {
                 echo "Artifact ID is '${ArtifactId}'"
                 echo "Version is '${Version}'"
-                echo "GroupID is '{}'"
+                echo "GroupID is '${GroupID}'"
                 echo "Name is '${Name}'"
             }
         } 
