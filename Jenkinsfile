@@ -39,9 +39,9 @@ pipeline{
         // i generate it from pipline in jenkins
         stage ('Publish to Nexus') {
             steps {
-                 //script {
+                 script {// this script to the repo snapshot and release one in nexus 
 
-                //def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
+                def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
                 nexusArtifactUploader artifacts:
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
@@ -52,10 +52,12 @@ pipeline{
                 nexusUrl: '172.20.10.45:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
-                repository: 'VinaysDevOpsLab-SNAPSHOT',
+                repository: "${NexusRepo}",
                 version: "${Version}"
             }            
         }
+        }
+        
         // Stage 5 : Print some information
         stage ('Print Environment variables'){
                     steps {
