@@ -39,7 +39,7 @@ pipeline{
         // i generate it from pipline in jenkins
         stage ('Publish to Nexus') {
             steps {
-                 script {// this script to the repo snapshot and release one in nexus 
+                 script { 
 
                 def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
                 nexusArtifactUploader artifacts:
