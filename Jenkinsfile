@@ -36,28 +36,29 @@ pipeline{
         
         //stage4 : Publish the artifat to Nexus
         // i generate it from pipline in jenkins
-        stage ('Publish to Nexus') {
+        // Stage3 : Publish the artifacts to Nexus
+        stage ('Publish to Nexus'){
             steps {
-                 script { 
+                script {
 
                 def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
-               
-                nexusArtifactUploader artifacts:
-                [[artifactId: "${ArtifactId}",
-                classifier: '',
-                file: "target/${ArtifactId}-${Version}.war",
-                type: 'war']],
-                credentialsId: '3d9d30ef-964d-41d0-b514-02ded5bc8c6f',
-                groupId: "${GroupId}",
-                nexusUrl: '172.20.10.45:8081',
-                nexusVersion: 'nexus3',
-                protocol: 'http',
-                repository: "${NexusRepo}",
+
+                nexusArtifactUploader artifacts: 
+                [[artifactId: "${ArtifactId}", 
+                classifier: '', 
+                file: "target/${ArtifactId}-${Version}.war", 
+                type: 'war']], 
+                credentialsId: '3d9d30ef-964d-41d0-b514-02ded5bc8c6f', 
+                groupId: "${GroupId}", 
+                nexusUrl: '172.20.10.45:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: "${NexusRepo}", 
                 version: "${Version}"
-            }            
+             }
+            }
         }
-        }
-        
+      
         // Stage 5 : Print some information
         stage ('Print Environment variables'){
                     steps {
@@ -67,6 +68,8 @@ pipeline{
                         echo "Name is '${Name}'"
                     }
                 }
+
+
 
         // // Stage3 : Publish the source code to Sonarqube
         // stage ('Sonarqube Analysis'){
