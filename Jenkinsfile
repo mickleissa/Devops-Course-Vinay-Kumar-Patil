@@ -31,7 +31,6 @@ pipeline{
         stage ('Deploy'){
             steps {
                 echo ' deploying......'
-
             }
         }
         
@@ -42,13 +41,14 @@ pipeline{
                  script { 
 
                 def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
+               
                 nexusArtifactUploader artifacts:
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
                 file: "target/${ArtifactId}-${Version}.war",
                 type: 'war']],
                 credentialsId: '3d9d30ef-964d-41d0-b514-02ded5bc8c6f',
-                groupId: "${Groupid}",
+                groupId: "${GroupId}",
                 nexusUrl: '172.20.10.45:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
@@ -78,9 +78,5 @@ pipeline{
 
         //     }
         // }
-
-        
-        
     }
-
 }
