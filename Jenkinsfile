@@ -59,7 +59,8 @@ pipeline{
                 repository : 'VinaysDevOpsLab-SNAPSHOT'
                 //repository: "${NexusRepo}",
                 //version: '0.0.4-SNAPSHOT' 
-                version: "${Version}"
+                //version: "${Version}"
+                version: '${Version}'
              //}
             }
         }
