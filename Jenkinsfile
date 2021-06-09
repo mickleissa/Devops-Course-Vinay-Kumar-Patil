@@ -49,7 +49,7 @@ pipeline{
                 nexusUrl: '172.20.10.45:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository : 'VinaysDevOpsLab-SNAPSHOT'
+                repository : 'VinaysDevOpsLab-SNAPSHOT',
                 version: "${Version}"
             }
         }
