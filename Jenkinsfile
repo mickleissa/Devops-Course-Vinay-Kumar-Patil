@@ -50,7 +50,8 @@ pipeline{
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'VinaysDevOpsLab-SNAPSHOT',
-                version: "${Version}"
+                //version: "${Version}"
+                version: '0.0.2-SNAPSHOT'
             }
         }
       
